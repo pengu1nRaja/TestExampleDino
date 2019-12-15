@@ -6,20 +6,27 @@ import java.util.List;
 public class Users{
     private String name;
     private String number;
-    private long userId;
+    private static long userId = 0;
+    private long id = 0;
     private List<Users> usersList = new ArrayList<Users>();
 
     public Users(String name, String number) {
+        this.id = ++userId;
         this.name = name;
         this.number = number;
+
     }
     public void add(Users users){
         usersList.add(users);
     }
 
+    public long getId() {
+        return this.id;
+    }
+
     @Override
     public String toString() {
-        return "name: " + this.name + " number: " + this.number;
+        return "name: " + this.name + " number: " + this.number + " id: " + this.id;
     }
 
     public String getName() {
