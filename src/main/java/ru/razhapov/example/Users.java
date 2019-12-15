@@ -9,13 +9,13 @@ public class Users{
     private static long userId = 0;
     private long id = 0;
     public static List<Users> usersList = new ArrayList<Users>();
+    public List<Contacts> userPhoneBook = new ArrayList<Contacts>();
 
     public Users(String name, String number) {
         this.id = ++userId;
         this.name = name;
         this.number = number;
         usersList.add(this);
-
     }
     public void addUser(Users users){
         usersList.add(users);
@@ -26,8 +26,8 @@ public class Users{
         }
     }
 
-    public static void addContactList(String name, String number){
-        Contacts.addContactMyPhoneBook(name,number);
+    public void addContactList(String name, String number){
+        userPhoneBook.add(new Contacts(name, number));
     }
 
     @Override
@@ -35,7 +35,7 @@ public class Users{
         return "name: " + this.name
                 + " number: " + this.number
                 + " id: " + this.id
-                + " Телефонный справочник: " + Contacts.contactsList;
+                + " Телефонный справочник: " + userPhoneBook;
     }
 
     public long getId() {

@@ -21,15 +21,12 @@ public class Contacts{
         contactsList.add(contacts);
     }
 
-    public static void addContactMyPhoneBook(String name, String number){
-        contactsList.add(new Contacts(name, number));
-    }
 
     @Override
     public String toString() {
         return "name: " + this.name
                 + " number: " + this.number
-                + "id: " + this.id;
+                + " id: " + this.id;
     }
 
     public String getName() {
@@ -65,7 +62,7 @@ public class Contacts{
     }
 
     public List<Contacts> getContactsList() {
-        return this.contactsList;
+        return contactsList;
     }
 
     public static void setContactsList(List<Contacts> contactsList) {
