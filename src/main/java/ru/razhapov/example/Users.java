@@ -19,7 +19,7 @@ public class Users{
 
     public static boolean checkString(String string) {
         try {
-            Integer.parseInt(string);
+            Long.parseLong(string);
         } catch (Exception e) {
             return false;
         }
@@ -28,10 +28,14 @@ public class Users{
 
 
     public static void addUser(String name, String number){
-        if(!name.isEmpty() && !checkString(name)){
-            if (Long.parseLong(number) > 0) {
-                usersList.add(new Users(name, number));
+        try {
+            if(!name.isEmpty() && !checkString(name)){
+                if (!number.isEmpty() && Long.parseLong(number) > 0 && checkString(number)) {
+                    usersList.add(new Users(name, number));
+                }
             }
+        } catch (Exception e){
+
         }
     }
 

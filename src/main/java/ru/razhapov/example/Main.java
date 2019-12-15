@@ -10,6 +10,8 @@ public class Main {
         Users.usersList.get(2).addContactList("larisa", "07807");
         Users.addUser("ivan", "4325423432");
         Users.addUser("", "-2");
+        Users.addUser("532552", "bfwljefkew");
+        Users.addUser("frodo", "bfwljefkew");
         Users.showAllUsers();
 
     }
