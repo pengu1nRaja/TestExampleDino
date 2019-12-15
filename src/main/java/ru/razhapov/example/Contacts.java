@@ -14,11 +14,10 @@ public class Contacts{
         this.name = name;
         this.number = number;
         this.id = ++contactId;
-        contactsList.add(this);
     }
 
-    public void addContacts(Contacts contacts){
-        contactsList.add(contacts);
+    public static void addContact(String name, String number){
+        contactsList.add(new Contacts(name, number));
     }
 
 

@@ -15,20 +15,47 @@ public class Users{
         this.id = ++userId;
         this.name = name;
         this.number = number;
-        usersList.add(this);
     }
-    public void addUser(Users users){
-        usersList.add(users);
+
+    public static boolean checkString(String string) {
+        try {
+            Integer.parseInt(string);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
     }
-    public void showAllUsers() {
+
+
+    public static void addUser(String name, String number){
+        if(!name.isEmpty() && !checkString(name)){
+            if (Long.parseLong(number) > 0) {
+                usersList.add(new Users(name, number));
+            }
+        }
+    }
+
+    public static void showAllUsers() {
+
         for (Users user : Users.usersList) {
             System.out.println(user);
         }
     }
+//    public static void removeUser(String name){
+//
+//        for (Users element : usersList) {
+//            if(element.equals(name)){
+//                usersList.remove();
+//            }
+//        }
+//    }
 
     public void addContactList(String name, String number){
         userPhoneBook.add(new Contacts(name, number));
     }
+
+
+
 
     @Override
     public String toString() {
@@ -37,6 +64,9 @@ public class Users{
                 + " id: " + this.id
                 + " Телефонный справочник: " + userPhoneBook;
     }
+
+
+    // setters and getters, not work lombok ._.
 
     public long getId() {
         return this.id;
