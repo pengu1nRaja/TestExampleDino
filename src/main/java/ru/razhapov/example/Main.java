@@ -7,6 +7,7 @@ public class Main {
         Users.addUser("santa", "5435345");
         Users.addUser("zemo", "3432574");
         Users.addUser("samanta", "324629800");
+        Users users = new Users("michael", "1354351111");
 
         Users.usersList.get(0).addContactList("valera", "789676756");
         Users.usersList.get(0).addContactList("misha", "32792");

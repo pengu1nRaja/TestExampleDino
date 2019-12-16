@@ -16,6 +16,8 @@ public class Users{
         this.id = ++userId; // у каждого обекта уникальное id
         this.name = name;
         this.number = number;
+        usersList.add(this);
+        System.out.println("Пользователь "+ name +" добавлен!");
     }
 
     // проверяем строку на наличие цифр
@@ -33,8 +35,7 @@ public class Users{
         try {
             if(!name.isEmpty() && !checkString(name)){
                 if (!number.isEmpty() && Long.parseLong(number) > 0 && checkString(number)) {
-                    usersList.add(new Users(name, number));
-                    System.out.println("Пользователь " + name + " добавлен!");
+                    new Users(name, number);
                 }else{ }
             }
             else if(name.isEmpty()){
