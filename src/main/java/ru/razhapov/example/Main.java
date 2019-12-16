@@ -40,6 +40,11 @@ public class Main {
         Users.usersList.get(1).removeContact("alina");
         Users.showAllUsers();
         Users.usersList.get(0).showAllContactUserPhoneBook();
+        Users.usersList.get(0).editContactInUserPhoneBook("misha","2312", "65464325");
+        Users.usersList.get(0).editContactInUserPhoneBook("misha","nastya", "dfsdf");
+        Users.usersList.get(0).editContactInUserPhoneBook("misha","342423", "dff3sdf");
+        Users.usersList.get(0).editContactInUserPhoneBook("misha","nastya", "1111111");
+        Users.usersList.get(0).showAllContactUserPhoneBook();
 
     }
 }

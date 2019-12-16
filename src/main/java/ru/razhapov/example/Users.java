@@ -236,6 +236,45 @@ public class Users{
         System.out.println("");
     }
 
+    // редактирование контакта в телефонной книге пользователя
+    public void editContactInUserPhoneBook(String oldname, String newname, String number){
+        try {
+            if(!checkString(newname) && checkString(number)){ // если с аргументами все хорошо(имя это не цифры, а номер телефона это не буквы)
+                System.out.println("Редактируем контакт " + oldname + " пользователя " + this.getName());
+                for (int i = 0; i < this.userPhoneBook.size(); i++) { // цикл по списку пользователей
+                    if (!newname.isEmpty() && !number.isEmpty()){ // если имя и номер не пустые
+                        if (userPhoneBook.get(i).getName().equals(oldname)) {
+                            System.out.println("Редактируем имя и номер");
+                            userPhoneBook.get(i).setName(newname); // изменяем имя у контакта
+                            userPhoneBook.get(i).setNumber(number); // меняем его номер
+                        }
+                    }
+                    else if(number.isEmpty()) { // если пустой только номер изменяем имя
+                        System.out.println("Редактируем имя");
+                        if (userPhoneBook.get(i).getName().equals(oldname)) {
+                            userPhoneBook.get(i).setName(newname);
+                        }
+                    }
+                    else if (newname.isEmpty()){ // если пустое имя, изменяем только номер телефона
+                        System.out.println("Редактируем номер");
+                        if (userPhoneBook.get(i).getName().equals(oldname)) {
+                            userPhoneBook.get(i).setNumber(number);
+                        }
+                    }
+                }
+            }
+            else if(!checkString(newname)){ // если если имя введено верно, но номер с ошибкой
+                System.out.println("Некорректно введен номер: " + number);
+            }
+            else { // если есть ошибка в имени то выводим соответсвующее сообщение
+                System.out.println("Некорректно введено имя: " + newname);
+            }
+        } catch (Exception e){ // выбрасывает эксипшн при неправильном вводе номера телефона
+            System.out.println("Некорректно введен номер: " + number);
+        }
+        System.out.println("");
+    }
+
 
     @Override
     public String toString() {
