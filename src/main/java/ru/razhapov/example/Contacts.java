@@ -6,14 +6,13 @@ import java.util.List;
 public class Contacts{
     private String name;
     private String number;
-    private static long contactId = 0;
     private long id = 0;
     public static List<Contacts> contactsList = new ArrayList<Contacts>();
 
     public Contacts(String name, String number) {
         this.name = name;
         this.number = number;
-        this.id = ++contactId;
+        this.id = ++id;
     }
 
     public static void addContact(String name, String number){
@@ -27,6 +26,8 @@ public class Contacts{
                 + " number: " + this.number
                 + " id: " + this.id;
     }
+
+
 
     public String getName() {
         return name;
@@ -44,13 +45,13 @@ public class Contacts{
         this.number = number;
     }
 
-    public static long getContactId() {
-        return contactId;
-    }
-
-    public static void setContactId(long contactId) {
-        Contacts.contactId = contactId;
-    }
+//    public static long getContactId() {
+//        return contactId;
+//    }
+//
+//    public static void setContactId(long contactId) {
+//        Contacts.contactId = contactId;
+//    }
 
     public long getId() {
         return id;

@@ -12,7 +12,9 @@ public class Main {
         Users.addUser("", "-2");
         Users.addUser("532552", "bfwljefkew");
         Users.addUser("frodo", "bfwljefkew");
-        Users.showAllUsers();
+        Users.removeUser("oleg");
 
+        Users.usersList.get(0).findContact("valera");
+        Users.showAllUsers();
     }
 }
