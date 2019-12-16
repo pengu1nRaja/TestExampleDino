@@ -19,6 +19,8 @@ public class Users{
     }
 
     // проверяем строку на наличие цифр
+    // true при числах
+    // false при строке
     public static boolean checkString(String string) {
         try {
             Long.parseLong(string);
@@ -35,16 +37,51 @@ public class Users{
                 if (!number.isEmpty() && Long.parseLong(number) > 0 && checkString(number)) {
                     usersList.add(new Users(name, number));
                     System.out.println("Пользователь " + name + " добавлен!");
-                }else{
-
-                }
-            }else if(name.isEmpty()){
+                }else{ }
+            }
+            else if(name.isEmpty()){
                 System.out.println("Пустое значение");
             }
             else {
                 System.out.println("Некорректно введено имя: " + name);
             }
         } catch (Exception e){
+            System.out.println("Некорректно введен номер: " + number);
+        }
+        System.out.println("");
+    }
+
+    //редактируем пользователя
+    public void editUser(String name, String number){
+        try {
+            if(!checkString(name) && checkString(number)){ // если с аргументами все хорошо(имя это не цифры, а номер телефона это не буквы)
+                System.out.println("Редактируем пользователя " + this.getName());
+                for (int i = 0; i < usersList.size(); i++) { // цикл по списку пользователей
+                    if (!name.isEmpty() && !number.isEmpty()){ // если имя и номер не пустые
+                        if (usersList.get(i).getName().equals(this.getName())) {
+                            System.out.println("Редактируем имя и номер");
+                            usersList.get(i).setName(name); // изменяем имя у пользователя
+                            usersList.get(i).setNumber(number); // меняем его номер
+                        }
+                    }
+                    else if(number.isEmpty()) { // если пустой только номер изменяем имя
+                        System.out.println("Редактируем имя");
+                        if (usersList.get(i).getName().equals(this.getName())) {
+                            usersList.get(i).setName(name);
+                        }
+                    }
+                    else if (name.isEmpty()){ // если пустое имя, изменяем только номер телефона
+                        System.out.println("Редактируем номер");
+                        if (usersList.get(i).getName().equals(this.getName())) {
+                            usersList.get(i).setNumber(number);
+                        }
+                    }
+                }
+            }
+            else { // если есть ошибка в имени то выводим соответсвующее сообщение
+                System.out.println("Некорректно введено имя: " + name);
+            }
+        } catch (Exception e){ // выбрасывает эксипшн при неправильном вводе номера телефона
             System.out.println("Некорректно введен номер: " + number);
         }
         System.out.println("");

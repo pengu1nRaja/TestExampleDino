@@ -15,10 +15,6 @@ public class Contacts{
         this.id = ++id;
     }
 
-    public static void addContact(String name, String number){
-        contactsList.add(new Contacts(name, number));
-    }
-
 
     @Override
     public String toString() {
@@ -44,14 +40,6 @@ public class Contacts{
     public void setNumber(String number) {
         this.number = number;
     }
-
-//    public static long getContactId() {
-//        return contactId;
-//    }
-//
-//    public static void setContactId(long contactId) {
-//        Contacts.contactId = contactId;
-//    }
 
     public long getId() {
         return id;

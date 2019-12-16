@@ -16,6 +16,8 @@ public class Main {
 
         Users.usersList.get(0).findContact("valera");
         Users.findUser("santa");
+
+        Users.usersList.get(1).editUser("feofan", "123");
         Users.showAllUsers();
     }
 }
