@@ -19,15 +19,13 @@ public class Users{
     }
 
     // проверяем строку на наличие цифр
-    // true при числах
-    // false при строке
     public static boolean checkString(String string) {
         try {
             Long.parseLong(string);
         } catch (Exception e) {
-            return false;
+            return false;// false при строковом аргументе
         }
-        return true;
+        return true;// true при числах
     }
 
     // добавление пользователя(не контакт)
@@ -107,6 +105,7 @@ public class Users{
         }
         System.out.println("");
     }
+
     // поиск пользователя(не контакта)
     public static void findUser(String name){
         List<Users> list = new ArrayList<Users>();
@@ -133,20 +132,49 @@ public class Users{
         System.out.println("");
     }
 
-    // добавление контакта в телефонную книгу пользователя
-    public void addContactList(String name, String number){
-        System.out.println("Добавляем контакт " + name + " в телефонную книгу пользователя " + this.getName());
-        userPhoneBook.add(new Contacts(name, number));
-        System.out.println("");
+    // получение пользователя по id
+    public static Users userGetId(int id){
+        Users user = null;
+        System.out.println("Получаем пользователя по id: "+ id);
+        for (int i = 0; i < usersList.size(); i++) {
+            if(usersList.get(i).getId() == id){
+                user = usersList.get(i);
+                break;
+            }
+            else{
+            }
+        }
+        return user;
     }
 
-    //поиск контакта в телефонной книге пользователя
-    public void findContact(String name){
+    // добавление контакта в телефонную книгу пользователя
+    public void addContactList(String name, String number){
+        System.out.println("Добавляем контакт " + name + " в телефонную книгу пользователя " + this.getName() + "\n");
+        userPhoneBook.add(new Contacts(name, number));
+    }
+
+    // получение контакта по id
+    public Contacts contactsGetId(int id){
+        Contacts contacts = null;
+        System.out.println("Получаем контакт по id: "+ id +" у пользователя " + this.getName());
+        for (int i = 0; i < userPhoneBook.size(); i++) {
+            if(usersList.get(i).getId() == id){
+                contacts = userPhoneBook.get(i);
+                break;
+            }
+            else{
+            }
+        }
+        return contacts;
+    }
+
+    //поиск контакта в телефонной книге пользователя номеру телефона
+    public void findContact(String number){
         List<Contacts> list = new ArrayList<Contacts>();
         int count = 0;
-        System.out.println("Поиск контакта: " + name + " в телефонной книге пользователя " + this.getName());
+        System.out.println("Поиск контакта с номером телефона: " + number + " в телефонной книге пользователя " + this.getName());
         for (int i = 0; i < this.userPhoneBook.size(); i++) {
-            if(this.userPhoneBook.get(i).getName().equals(name)){
+            if(this.userPhoneBook.get(i).getNumber().equals(number)){
                 list.add(userPhoneBook.get(i));
                 count++;
             }
@@ -157,7 +185,7 @@ public class Users{
             System.out.println("Результатов поиска: " + count + "\n" + list);
         }
         else{
-            System.out.println("Нет такого контакта: " + name + " в телефонной книге пользователя " + this.getName());
+            System.out.println("Нет такого контакта с таким номером: " + number + " в телефонной книге пользователя " + this.getName());
         }
         for (int i = list.size()-1; i >= 0; i--) {
             list.remove(i);
@@ -165,6 +193,8 @@ public class Users{
         count = 0;
         System.out.println("");
     }
+
+
 
     @Override
     public String toString() {
