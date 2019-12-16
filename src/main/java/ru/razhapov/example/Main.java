@@ -33,5 +33,7 @@ public class Main {
         Users.usersList.get(1).removeContact("gfdgfd");
         Users.usersList.get(1).removeContact("alina");
         Users.showAllUsers();
+        Users.usersList.get(0).showAllContactUserPhoneBook();
+
     }
 }

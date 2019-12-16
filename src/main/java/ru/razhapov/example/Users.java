@@ -226,6 +226,16 @@ public class Users{
         }
     }
 
+    // показать все контакты пользователя
+    public void showAllContactUserPhoneBook(){
+        System.out.println("Список всех контактов, пользователя " +this.getName()+ ": ");
+        for(int i = 0; i < this.userPhoneBook.size()-1; i++){
+            System.out.println(userPhoneBook.toString());
+        }
+
+        System.out.println("");
+    }
+
 
     @Override
     public String toString() {
