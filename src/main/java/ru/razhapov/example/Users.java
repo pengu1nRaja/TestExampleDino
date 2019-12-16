@@ -49,7 +49,7 @@ public class Users{
         System.out.println("");
     }
 
-    //редактируем пользователя
+    // редактируем пользователя
     public void editUser(String name, String number){
         try {
             if(!checkString(name) && checkString(number)){ // если с аргументами все хорошо(имя это не цифры, а номер телефона это не буквы)
@@ -96,11 +96,19 @@ public class Users{
 
     // удаление пользователя(не контакта)
     public static void removeUser(String name){
+        int count = 0;
         for (int i = 0; i < usersList.size(); i++) {
             if(usersList.get(i).getName().equals(name)){
-
+                System.out.println("Удаляем телефонную книгу пользователя");
+                for(int j = usersList.get(i).userPhoneBook.size()-1; j >= 0;){
+                    usersList.get(i).userPhoneBook.remove(j);
+                    j--;
+                    count++;
+                }
+                System.out.println("Удалено " + count+ " контактов. Удаляем пользователя");
                 usersList.remove(i);
                 System.out.println("Пользователь " + name + " удалён");
+                break;
             }
         }
         System.out.println("");
@@ -128,7 +136,6 @@ public class Users{
         for (int i = list.size()-1; i >= 0; i--) {
             list.remove(i);
         }
-        count = 0;
         System.out.println("");
     }
 
@@ -194,6 +201,30 @@ public class Users{
         System.out.println("");
     }
 
+    // удаление контакта в телефонной книге
+    public void removeContact(String name){
+        int count = 0;
+        System.out.println("Удаление контакта " + name + " пользователя " + this.getName());
+        if(!name.isEmpty() && !checkString(name)){
+            for (int i = 0; i < this.userPhoneBook.size(); i++) {
+                if(name.equals(this.userPhoneBook.get(i).getName())){
+                    this.userPhoneBook.remove(i);
+                    System.out.println("Контакт " + name +" удалён \n");
+                    count++;
+                    break;
+                }
+            }
+            if(count == 0){
+                System.out.println("Контакт "+ name +" не найден\n");
+            }
+        }
+        else if(name.isEmpty()){
+            System.out.println("Пустое значение\n");
+        }
+        else if (checkString(name)){
+            System.out.println("Вы ввели цифры\n");
+        }
+    }
 
 
     @Override
@@ -201,7 +232,8 @@ public class Users{
         return "Имя: " + this.name
                 + " Номер: " + this.number
                 + " id: " + this.id
-                + " Телефонный справочник: " + userPhoneBook + "\n";
+                + " Телефонный справочник: " + userPhoneBook
+                + "\n";
 
     }
 
