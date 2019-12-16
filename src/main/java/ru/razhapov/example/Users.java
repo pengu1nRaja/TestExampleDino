@@ -120,7 +120,7 @@ public class Users{
         int count = 0;
         System.out.println("Поиск пользователя: " + name);
         for (int i = 0; i < usersList.size(); i++) {
-            if(usersList.get(i).getName().equals(name)){
+            if(usersList.get(i).getName().contains(name)){
                 list.add(usersList.get(i));
                 count++;
             }

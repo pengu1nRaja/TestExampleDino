@@ -6,6 +6,7 @@ public class Main {
         Users.addUser("oleg", "435435345");
         Users.addUser("santa", "5435345");
         Users.addUser("zemo", "3432574");
+        Users.addUser("samanta", "324629800");
 
         Users.usersList.get(0).addContactList("valera", "789676756");
         Users.usersList.get(0).addContactList("misha", "32792");
@@ -21,7 +22,12 @@ public class Main {
         Users.removeUser("oleg");
 
         Users.usersList.get(0).findContact("32792");
+        Users.findUser("sa");
+        System.out.println("==============");
+        Users.findUser("sant");
+        System.out.println("==============");
         Users.findUser("santa");
+        System.out.println("==============");
 
         Users.usersList.get(1).editUser("feofan", "123");
         System.out.println(Users.userGetId(3));
