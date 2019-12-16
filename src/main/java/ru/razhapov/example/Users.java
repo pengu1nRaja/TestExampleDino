@@ -13,11 +13,26 @@ public class Users{
 
     // конструктор
     public Users(String name, String number) {
-        this.id = ++userId; // у каждого обекта уникальное id
-        this.name = name;
-        this.number = number;
-        usersList.add(this);
-        System.out.println("Пользователь "+ name +" добавлен!");
+        try {
+            if(!name.isEmpty() && !checkString(name)){
+                if (!number.isEmpty() && Long.parseLong(number) > 0 && checkString(number)) {
+                    this.id = ++userId; // у каждого обекта уникальное id
+                    this.name = name;
+                    this.number = number;
+                    usersList.add(this);
+                    System.out.println("Пользователь "+ name +" добавлен!");
+                }else{ }
+            }
+            else if(name.isEmpty()){
+                System.out.println("Пользователь не добавлен: Пустое значение");
+            }
+            else {
+                System.out.println("Пользователь не добавлен: Некорректно введено имя: " + name);
+            }
+        } catch (Exception e){
+            System.out.println("Пользователь не добавлен: Некорректно введен номер: " + number);
+        }
+        System.out.println("");
     }
 
     // проверяем строку на наличие цифр
@@ -32,22 +47,7 @@ public class Users{
 
     // добавление пользователя(не контакт)
     public static void addUser(String name, String number){
-        try {
-            if(!name.isEmpty() && !checkString(name)){
-                if (!number.isEmpty() && Long.parseLong(number) > 0 && checkString(number)) {
-                    new Users(name, number);
-                }else{ }
-            }
-            else if(name.isEmpty()){
-                System.out.println("Пустое значение");
-            }
-            else {
-                System.out.println("Некорректно введено имя: " + name);
-            }
-        } catch (Exception e){
-            System.out.println("Некорректно введен номер: " + number);
-        }
-        System.out.println("");
+        new Users(name, number);
     }
 
     // редактируем пользователя

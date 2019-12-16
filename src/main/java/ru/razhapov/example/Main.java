@@ -8,6 +8,9 @@ public class Main {
         Users.addUser("zemo", "3432574");
         Users.addUser("samanta", "324629800");
         Users users = new Users("michael", "1354351111");
+        Users users1 = new Users("12312", "okomp");
+        Users users3 = new Users("asdsa", "gfdgdf");
+        Users users2 = new Users("petr", "17222");
 
         Users.usersList.get(0).addContactList("valera", "789676756");
         Users.usersList.get(0).addContactList("misha", "32792");
