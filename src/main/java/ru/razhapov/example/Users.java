@@ -11,12 +11,14 @@ public class Users{
     public static List<Users> usersList = new ArrayList<Users>();
     public List<Contacts> userPhoneBook = new ArrayList<Contacts>();
 
+    // конструктор
     public Users(String name, String number) {
-        this.id = ++userId;
+        this.id = ++userId; // у каждого обекта уникальное id
         this.name = name;
         this.number = number;
     }
 
+    // проверяем строку на наличие цифр
     public static boolean checkString(String string) {
         try {
             Long.parseLong(string);
@@ -33,13 +35,19 @@ public class Users{
                 if (!number.isEmpty() && Long.parseLong(number) > 0 && checkString(number)) {
                     usersList.add(new Users(name, number));
                     System.out.println("Пользователь " + name + " добавлен!");
-                }else{ }
-            }else {
+                }else{
+
+                }
+            }else if(name.isEmpty()){
+                System.out.println("Пустое значение");
+            }
+            else {
                 System.out.println("Некорректно введено имя: " + name);
             }
         } catch (Exception e){
             System.out.println("Некорректно введен номер: " + number);
         }
+        System.out.println("");
     }
 
     // показать всех пользователей(не контактов)
@@ -48,6 +56,7 @@ public class Users{
         for (Users user : Users.usersList) {
             System.out.println(user);
         }
+        System.out.println("");
     }
 
     // удаление пользователя(не контакта)
@@ -59,12 +68,39 @@ public class Users{
                 System.out.println("Пользователь " + name + " удалён");
             }
         }
+        System.out.println("");
+    }
+    // поиск пользователя(не контакта)
+    public static void findUser(String name){
+        List<Users> list = new ArrayList<Users>();
+        int count = 0;
+        System.out.println("Поиск пользователя: " + name);
+        for (int i = 0; i < usersList.size(); i++) {
+            if(usersList.get(i).getName().equals(name)){
+                list.add(usersList.get(i));
+                count++;
+            }
+            else{
+            }
+        }
+        if(count > 0) {
+            System.out.println("Результатов поиска: " + count + "\n" + list);
+        }
+        else{
+            System.out.println("Нет такого пользователя: " + name);
+        }
+        for (int i = list.size()-1; i >= 0; i--) {
+            list.remove(i);
+        }
+        count = 0;
+        System.out.println("");
     }
 
     // добавление контакта в телефонную книгу пользователя
     public void addContactList(String name, String number){
         System.out.println("Добавляем контакт " + name + " в телефонную книгу пользователя " + this.getName());
         userPhoneBook.add(new Contacts(name, number));
+        System.out.println("");
     }
 
     //поиск контакта в телефонной книге пользователя
@@ -90,6 +126,7 @@ public class Users{
             list.remove(i);
         }
         count = 0;
+        System.out.println("");
     }
 
     @Override
@@ -97,7 +134,8 @@ public class Users{
         return "Имя: " + this.name
                 + " Номер: " + this.number
                 + " id: " + this.id
-                + " Телефонный справочник: " + userPhoneBook;
+                + " Телефонный справочник: " + userPhoneBook + "\n";
+
     }
 
 

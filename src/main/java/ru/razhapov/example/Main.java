@@ -15,6 +15,7 @@ public class Main {
         Users.removeUser("oleg");
 
         Users.usersList.get(0).findContact("valera");
+        Users.findUser("santa");
         Users.showAllUsers();
     }
 }
